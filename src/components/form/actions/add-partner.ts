@@ -1,7 +1,10 @@
 "use server";
 
-import { TAddPartnerFormData } from "./dto/create-partner";
+import { actionClient } from "@/lib/safe-actions";
+import { addPartnerSchema, TAddPartnerFormData } from "./dto/create-partner";
 
-export async function addPartner(data: TAddPartnerFormData) {
-  console.log(data);
-}
+export const addPartner = actionClient
+  .inputSchema(addPartnerSchema)
+  .action(async ({ parsedInput }: { parsedInput: TAddPartnerFormData }) => {
+    console.log(parsedInput);
+  });

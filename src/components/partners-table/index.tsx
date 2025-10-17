@@ -1,4 +1,5 @@
 import { TGetPartnersResponse } from "@/lib/partner/types";
+import { Dispatch, SetStateAction } from "react";
 import {
   Table,
   TableBody,
@@ -11,8 +12,10 @@ import { PartnerDropdown } from "./dropdown";
 
 export const PartnersTable = ({
   partners,
+  setPartners,
 }: {
   partners: TGetPartnersResponse[];
+  setPartners: Dispatch<SetStateAction<TGetPartnersResponse[]>>;
 }) => {
   return (
     <div className="w-full max-w-1/3">
@@ -34,7 +37,10 @@ export const PartnersTable = ({
                 {partner.participation.toFixed(2)}%
               </TableCell>
               <TableCell className="text-center">
-                <PartnerDropdown partnerId={partner.id} />
+                <PartnerDropdown
+                  partnerId={partner.id}
+                  setPartners={setPartners}
+                />
               </TableCell>
             </TableRow>
           ))}

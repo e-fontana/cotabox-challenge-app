@@ -9,8 +9,7 @@ export const DashboardContent = ({
 }: {
   partners: TGetPartnersResponse[];
 }) => {
-  const [partnersData, setPartnersData] =
-    useState<TGetPartnersResponse[]>(partners);
+  const [partnersData, setPartnersData] = useState<TGetPartnersResponse[]>(partners);
   return (
     <section className="space-y-16 py-8">
       <div className="flex w-full flex-col items-center justify-center">
@@ -20,7 +19,7 @@ export const DashboardContent = ({
         </h4>
       </div>
       <div className="flex w-full items-center justify-center gap-8">
-        <PartnersTable partners={partnersData} />
+        <PartnersTable partners={partnersData} setPartners={setPartnersData} />
         <PartnerChart partners={partnersData} />
       </div>
     </section>

@@ -1,4 +1,4 @@
-export function validateToken(token?: string) {
-  if (!token) return false;
+export async function validateToken(token?: string) {
+  const isValid = await 
   return true;
 }

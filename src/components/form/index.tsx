@@ -1,22 +1,28 @@
+"use client";
+import { useAction } from "next-safe-action/hooks";
 import Form from "next/form";
 import { addPartner } from "./actions/add-partner";
 
 export const AddPartnerForm = () => {
+  const { execute } = useAction(addPartner, {});
   return (
-    <Form action={addPartner} className="flex items-center gap-4">
+    <Form action={execute} className="flex items-center gap-4">
       <input
-        name="name"
+        id="firstName"
+        name="firstName"
         type="text"
         placeholder="Name"
         className="rounded-lg bg-slate-50 px-3 py-4 outline-none"
       />
       <input
+        id="lastName"
         name="lastName"
         placeholder="Last Name"
         type="text"
         className="rounded-lg bg-slate-50 px-3 py-4 outline-none"
       />
       <input
+        id="participation"
         name="participation"
         type="text"
         placeholder="Participation"

@@ -14,6 +14,8 @@ export function middleware(req: NextRequest) {
 
   const token = req.cookies.get("token")?.value;
 
+  console.log(token);
+
   if (pathname.startsWith("/dashboard") && !validateToken("token")) {
     const loginUrl = new URL("/login", req.url);
     return NextResponse.redirect(loginUrl);

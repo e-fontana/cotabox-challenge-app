@@ -61,7 +61,7 @@ export function PartnerChart({
 
   const chartData: PartnerChartData[] = [...top4ChartData, ...othersChartData];
 
-  let chartConfig: ChartConfig = {
+  const chartConfig: ChartConfig = {
     participation: { label: "Participação (%)" },
   };
 
