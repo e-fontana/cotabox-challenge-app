@@ -1,11 +1,12 @@
 import { LoginForm } from "@/components/login-form";
+import { RegisterForm } from "@/components/register-form";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Login",
+  title: "Register",
 };
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <section className="flex h-screen flex-col items-center justify-center gap-8 border px-4">
       <div className="w-72">
@@ -16,7 +17,7 @@ export default function LoginPage() {
           src={"/logo-cotabox.png"}
         />
       </div>
-      <LoginForm />
+      <RegisterForm />
     </section>
   );
 }

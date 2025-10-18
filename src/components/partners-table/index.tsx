@@ -34,7 +34,7 @@ export const PartnersTable = ({
               <TableCell className="text-center">{partner.firstName}</TableCell>
               <TableCell className="text-center">{partner.lastName}</TableCell>
               <TableCell className="text-center">
-                {partner.participation.toFixed(2)}%
+                {partner.participationPercentage.toFixed(2)}%
               </TableCell>
               <TableCell className="text-center">
                 <PartnerDropdown

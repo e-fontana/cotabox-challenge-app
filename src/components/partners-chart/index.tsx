@@ -31,18 +31,15 @@ export function PartnerChart({
 }: {
   partners: TGetPartnersResponse[];
 }) {
-  const sortedPartners = [...partners].sort(
-    (a, b) => b.participation - a.participation,
-  );
-  const top4Partners = sortedPartners.slice(0, 4);
+  const top4Partners = partners.slice(0, 4);
 
-  const othersParticipation = sortedPartners
+  const othersParticipation = partners
     .slice(4)
-    .reduce((sum, partner) => sum + partner.participation, 0);
+    .reduce((sum, partner) => sum + partner.participationPercentage, 0);
 
   const top4ChartData: PartnerChartData[] = top4Partners.map((p, index) => ({
     nameKey: `${p.firstName} ${p.lastName}`,
-    participation: p.participation,
+    participation: p.participationPercentage,
     label: `${p.firstName} ${p.lastName}`,
     fill: CHART_COLORS[index],
   }));
@@ -59,7 +56,9 @@ export function PartnerChart({
         ]
       : [];
 
-  const chartData: PartnerChartData[] = [...top4ChartData, ...othersChartData];
+  let chartData: PartnerChartData[] = [...top4ChartData, ...othersChartData];
+
+  chartData = chartData.sort((a, b) => b.participation - a.participation);
 
   const chartConfig: ChartConfig = {
     participation: { label: "Participação (%)" },

@@ -1,7 +1,9 @@
 "use client";
-import { deletePartner } from "@/components/form/actions/delete-partner";
+import { deletePartner } from "@/components/partners-form/actions/delete-partner";
+import { TGetPartnersResponse } from "@/lib/partner/types";
 import { Ellipsis, Trash } from "lucide-react";
 import { useAction } from "next-safe-action/hooks";
+import { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 import {
   DropdownMenu,
@@ -9,8 +11,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
-import { Dispatch, SetStateAction } from "react";
-import { TGetPartnersResponse } from "@/lib/partner/types";
 
 export const PartnerDropdown = ({
   partnerId,
@@ -31,6 +31,10 @@ export const PartnerDropdown = ({
 
   const handlePartnerDelete = () => {
     execute({ partnerId });
+  };
+
+  const handlePartnerEdit = () => {
+    toast.info("Edit partner feature coming soon!");
   };
 
   return (

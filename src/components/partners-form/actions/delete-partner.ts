@@ -1,5 +1,6 @@
 "use server";
 
+import { kyUser } from "@/lib/kyUser";
 import { actionClient } from "@/lib/safe-actions";
 import {
   deletePartnerSchema,
@@ -9,5 +10,9 @@ import {
 export const deletePartner = actionClient
   .inputSchema(deletePartnerSchema)
   .action(async ({ parsedInput }: { parsedInput: TDeletePartnerParams }) => {
-    console.log(parsedInput);
+    const request = await kyUser.delete(`partners/${parsedInput.partnerId}`);
+
+    if (!request.ok) throw new Error("Failed to delete partner");
+
+    return parsedInput.partnerId;
   });

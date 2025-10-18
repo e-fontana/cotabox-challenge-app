@@ -2,14 +2,15 @@
 import { PartnerChart } from "@/components/partners-chart";
 import { PartnersTable } from "@/components/partners-table";
 import { TGetPartnersResponse } from "@/lib/partner/types";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export const DashboardContent = ({
   partners,
+  setPartnersData,
 }: {
   partners: TGetPartnersResponse[];
+  setPartnersData: Dispatch<SetStateAction<TGetPartnersResponse[]>>;
 }) => {
-  const [partnersData, setPartnersData] = useState<TGetPartnersResponse[]>(partners);
   return (
     <section className="space-y-16 py-8">
       <div className="flex w-full flex-col items-center justify-center">
@@ -19,8 +20,8 @@ export const DashboardContent = ({
         </h4>
       </div>
       <div className="flex w-full items-center justify-center gap-8">
-        <PartnersTable partners={partnersData} setPartners={setPartnersData} />
-        <PartnerChart partners={partnersData} />
+        <PartnersTable partners={partners} setPartners={setPartnersData} />
+        <PartnerChart partners={partners} />
       </div>
     </section>
   );

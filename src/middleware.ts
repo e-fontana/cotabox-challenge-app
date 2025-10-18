@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { validateToken } from "./lib/auth/validate-token";
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const publicPaths = ["/", "/login", "/about"];
@@ -12,11 +12,9 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = req.cookies.get("token")?.value;
+  const isSessionValid = await validateToken();
 
-  console.log(token);
-
-  if (pathname.startsWith("/dashboard") && !validateToken("token")) {
+  if (pathname.startsWith("/dashboard") && !isSessionValid) {
     const loginUrl = new URL("/login", req.url);
     return NextResponse.redirect(loginUrl);
   }
