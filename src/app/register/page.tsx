@@ -1,4 +1,3 @@
-import { LoginForm } from "@/components/login-form";
 import { RegisterForm } from "@/components/register-form";
 import Image from "next/image";
 

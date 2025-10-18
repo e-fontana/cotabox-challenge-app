@@ -33,10 +33,6 @@ export const PartnerDropdown = ({
     execute({ partnerId });
   };
 
-  const handlePartnerEdit = () => {
-    toast.info("Edit partner feature coming soon!");
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer rounded-full p-1 transition-colors duration-300 outline-none hover:bg-zinc-200">

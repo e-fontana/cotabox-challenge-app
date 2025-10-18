@@ -9,9 +9,9 @@ export const LoginForm = () => {
   const router = useRouter();
 
   const { execute, isPending } = useAction(loginUser, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast.success("Usuário logado com sucesso!");
-      router.push("/dashboard")
+      router.push("/dashboard");
     },
     onError: (error) => {
       toast.error(error.error.serverError || "Erro ao logar usuário");
@@ -52,7 +52,9 @@ export const LoginForm = () => {
           <div>
             <div className="h-5 w-5 animate-spin rounded-full border-2 border-t-white border-r-white border-b-transparent border-l-transparent" />
           </div>
-        ) : "Login"}
+        ) : (
+          "Login"
+        )}
       </button>
     </Form>
   );

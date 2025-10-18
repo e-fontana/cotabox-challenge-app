@@ -2,7 +2,7 @@
 
 import { kyUser } from "@/lib/kyUser";
 import { actionClient } from "@/lib/safe-actions";
-import { TLoginFormData, TLoginFormResponse } from "./dto/login.dto";
+import { TLoginFormResponse } from "./dto/login.dto";
 import { registerSchema, TRegisterFormData } from "./dto/register.dto";
 
 export const registerUser = actionClient
