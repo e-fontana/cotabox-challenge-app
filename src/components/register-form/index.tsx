@@ -4,6 +4,7 @@ import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { registerUser } from "../login-form/actions/register";
+import Link from "next/link";
 
 export const RegisterForm = () => {
   const router = useRouter();
@@ -70,6 +71,9 @@ export const RegisterForm = () => {
           "Registrar"
         )}
       </button>
+      <Link href="/login" className="text-center text-sm text-zinc-600">
+        Já tem uma conta? Faça login agora!
+      </Link>
     </Form>
   );
 };
